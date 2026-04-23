@@ -43,3 +43,29 @@ Figma Design: [View Prototype →](https://www.figma.com/design/tR0qixfQ9u8WHDck
 ## 📄 License
 
 Het Roy © SmallBiz CRM
+
+---
+
+## 📁 Project Structure
+
+This project uses the **MERN** stack (MongoDB, Express, React, Node.js) with a clean separation between the frontend and backend.
+
+### 🌐 Frontend (`/frontend`)
+The frontend is initialized with **React + Vite** to ensure maximum performance and a smooth developer experience.
+- **`src/components/`**: Small, reusable UI components (Buttons, Cards, Modals).
+- **`src/pages/`**: Full-page views (Dashboard, Contacts, Pipeline).
+- **`src/hooks/`**: Custom React hooks for shared logic.
+- **`src/context/`**: Global state management (Authentication, Global UI state).
+- **`src/services/`**: Centralized API call logic.
+
+### ⚙️ Backend (`/backend`)
+The backend follows the **MVC (Model-View-Controller)** architecture, making it easy to scale and maintain.
+- **`controllers/`**: The "brain" of the app. Processes requests and returns data.
+- **`models/`**: Defines how data is stored in the database (Mongoose schemas).
+- **`routes/`**: Defines the URL endpoints and links them to controllers.
+- **`middlewares/`**: Functions that run before requests reach controllers (e.g., Auth checks).
+- **`config/`**: Contains database connections and environment settings.
+- **`utils/`**: Reusable helper functions.
+- **`app.js`**: Where the Express app is configured.
+- **`index.js`**: The main entry point that starts the server.
+
