@@ -10,6 +10,7 @@ import ContactDetailPage from './pages/ContactDetailPage';
 import DealsPage from './pages/DealsPage';
 import InvoicesPage from './pages/InvoicesPage';
 import WhatsAppPage from './pages/WhatsAppPage';
+import ReportsPage from './pages/ReportsPage';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/deals" element={<DealsPage />} />
         <Route path="/invoices" element={<InvoicesPage />} />
         <Route path="/whatsapp" element={<WhatsAppPage />} />
+        <Route path="/reports" element={<ReportsPage />} />
       </Routes>
     </Router>
   );
