@@ -10,7 +10,7 @@ This document provides all the endpoints available in the SmallBiz CRM backend. 
 
 ### 1. Register User
 *   **Method:** `POST`
-*   **Full Route:** `https://smallbiz.onrender.com/api/auth/register`
+*   **URL:** `https://smallbiz.onrender.com/api/auth/register`
 *   **Body (JSON):**
     ```json
     {
@@ -20,23 +20,11 @@ This document provides all the endpoints available in the SmallBiz CRM backend. 
       "password": "password123"
     }
     ```
-*   **Success Response:**
-    ```json
-    {
-      "token": "a1b2c3d4e5f6...",
-      "user": {
-        "id": "60d5ec...",
-        "name": "John Doe",
-        "email": "john@example.com",
-        "businessName": "Doe Enterprises",
-        "role": "owner"
-      }
-    }
-    ```
+*   **Success Result:** `200 OK` + User Object & Token.
 
 ### 2. Login User
 *   **Method:** `POST`
-*   **Full Route:** `https://smallbiz.onrender.com/api/auth/login`
+*   **URL:** `https://smallbiz.onrender.com/api/auth/login`
 *   **Body (JSON):**
     ```json
     {
@@ -44,197 +32,63 @@ This document provides all the endpoints available in the SmallBiz CRM backend. 
       "password": "password123"
     }
     ```
-*   **Success Response:**
-    ```json
-    {
-      "token": "a1b2c3d4e5f6...",
-      "user": {
-        "id": "60d5ec...",
-        "name": "John Doe",
-        "email": "john@example.com",
-        "businessName": "Doe Enterprises",
-        "role": "owner"
-      }
-    }
-    ```
+*   **Success Result:** `200 OK` + User Object & Token.
 
-### 3. Get Current User (Me)
+### 3. Get Current User (Me) - SIMPLE MODE
 *   **Method:** `GET`
-*   **Full Route:** `https://smallbiz.onrender.com/api/auth/me`
-*   **Headers:** `Authorization: Bearer <token>`
-*   **Success Response:**
-    ```json
-    {
-      "id": "60d5ec...",
-      "name": "John Doe",
-      "email": "john@example.com",
-      "businessName": "Doe Enterprises",
-      "role": "owner"
-    }
-    ```
+*   **URL:** `https://smallbiz.onrender.com/api/auth/me?token=YOUR_TOKEN`
+*   **Tip:** Just paste your token after `?token=` in the URL. No headers needed!
+*   **Success Result:** `200 OK` + Your Profile.
 
-### 4. Logout
+### 4. Logout - SIMPLE MODE
 *   **Method:** `POST`
-*   **Full Route:** `https://smallbiz.onrender.com/api/auth/logout`
-*   **Headers:** `Authorization: Bearer <token>`
-*   **Success Response:**
-    ```json
-    {
-      "message": "Logged out successfully."
-    }
-    ```
+*   **URL:** `https://smallbiz.onrender.com/api/auth/logout?token=YOUR_TOKEN`
+*   **Tip:** You can also put `"token": "..."` in the JSON body if you prefer.
+*   **Success Result:** `{"message": "Logged out successfully."}`
 
-### 5. Complete Onboarding
+### 5. Complete Onboarding - SIMPLE MODE
 *   **Method:** `POST`
-*   **Full Route:** `https://smallbiz.onrender.com/api/auth/onboarding`
-*   **Headers:** `Authorization: Bearer <token>`
+*   **URL:** `https://smallbiz.onrender.com/api/auth/onboarding?token=YOUR_TOKEN`
 *   **Body (JSON):**
     ```json
     {
       "industry": "Retail",
       "teamSize": "2-5",
-      "primaryGoal": "Manage WhatsApp messages"
+      "primaryGoal": "Manage WhatsApp"
     }
     ```
-*   **Success Response:**
-    ```json
-    {
-      "message": "Onboarding complete!",
-      "isOnboarded": true,
-      "onboarding": {
-        "industry": "Retail",
-        "teamSize": "2-5",
-        "primaryGoal": "Manage WhatsApp messages"
-      }
-    }
-    ```
-
-### 6. Update Profile
-*   **Method:** `PUT`
-*   **Full Route:** `https://smallbiz.onrender.com/api/auth/update-profile`
-*   **Headers:** `Authorization: Bearer <token>`
-*   **Body (JSON):**
-    ```json
-    {
-      "name": "John Updated",
-      "businessName": "New Business Name"
-    }
-    ```
-*   **Success Response:**
-    ```json
-    {
-      "message": "Profile updated successfully.",
-      "user": { ... }
-    }
-    ```
+*   **Success Result:** `{"message": "Onboarding complete!"}`
 
 ---
 
 ## 👥 Contacts Routes (`/contacts`)
 
-### 1. Get All Contacts
+### 1. Get All Contacts - SIMPLE MODE
 *   **Method:** `GET`
-*   **Full Route:** `https://smallbiz.onrender.com/api/contacts`
-*   **Headers:** `Authorization: Bearer <token>`
-*   **Success Response:**
-    ```json
-    {
-      "success": true,
-      "count": 1,
-      "data": [
-        {
-          "_id": "60d5f1...",
-          "name": "Jane Smith",
-          "email": "jane@example.com",
-          "phone": "+91 99999 88888",
-          "company": "Smith Logistics",
-          "stage": "Lead",
-          "tags": ["VIP"],
-          "createdAt": "2026-05-01T..."
-        }
-      ]
-    }
-    ```
+*   **URL:** `https://smallbiz.onrender.com/api/contacts?token=YOUR_TOKEN`
+*   **Success Result:** `200 OK` + List of contacts.
 
-### 2. Create New Contact
+### 2. Create New Contact - SIMPLE MODE
 *   **Method:** `POST`
-*   **Full Route:** `https://smallbiz.onrender.com/api/contacts`
-*   **Headers:** `Authorization: Bearer <token>`
+*   **URL:** `https://smallbiz.onrender.com/api/contacts?token=YOUR_TOKEN`
 *   **Body (JSON):**
     ```json
     {
       "name": "Jane Smith",
       "email": "jane@example.com",
-      "phone": "+91 99999 88888",
-      "company": "Smith Logistics",
       "stage": "Lead"
     }
     ```
-*   **Success Response:**
-    ```json
-    {
-      "success": true,
-      "data": {
-        "_id": "60d5f1...",
-        "name": "Jane Smith",
-        "email": "jane@example.com",
-        "phone": "+91 99999 88888",
-        "company": "Smith Logistics",
-        "stage": "Lead",
-        "user": "60d5ec..."
-      }
-    }
-    ```
+*   **Success Result:** `200 OK` + Created Contact.
 
 ### 3. Get Single Contact
 *   **Method:** `GET`
-*   **Full Route:** `https://smallbiz.onrender.com/api/contacts/:id`
-*   **Headers:** `Authorization: Bearer <token>`
-*   **Success Response:**
-    ```json
-    {
-      "success": true,
-      "data": {
-        "_id": "60d5f1...",
-        "name": "Jane Smith",
-        "email": "jane@example.com",
-        "phone": "+91 99999 88888",
-        "company": "Smith Logistics",
-        "stage": "Lead"
-      }
-    }
-    ```
+*   **URL:** `https://smallbiz.onrender.com/api/contacts/:id?token=YOUR_TOKEN`
 
 ### 4. Update Contact
 *   **Method:** `PUT`
-*   **Full Route:** `https://smallbiz.onrender.com/api/contacts/:id`
-*   **Headers:** `Authorization: Bearer <token>`
-*   **Body (JSON):**
-    ```json
-    {
-      "stage": "Won"
-    }
-    ```
-*   **Success Response:**
-    ```json
-    {
-      "success": true,
-      "data": {
-        "_id": "60d5f1...",
-        "name": "Jane Smith",
-        "stage": "Won"
-      }
-    }
-    ```
+*   **URL:** `https://smallbiz.onrender.com/api/contacts/:id?token=YOUR_TOKEN`
 
 ### 5. Delete Contact
 *   **Method:** `DELETE`
-*   **Full Route:** `https://smallbiz.onrender.com/api/contacts/:id`
-*   **Headers:** `Authorization: Bearer <token>`
-*   **Success Response:**
-    ```json
-    {
-      "success": true,
-      "data": {}
-    }
-    ```
+*   **URL:** `https://smallbiz.onrender.com/api/contacts/:id?token=YOUR_TOKEN`

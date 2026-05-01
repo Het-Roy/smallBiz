@@ -10,6 +10,8 @@ const protect = async (req, res, next) => {
       token = authHeader.split(/\s+/)[1];
     } else if (req.query.token) {
       token = req.query.token;
+    } else if (req.body && req.body.token) {
+      token = req.body.token;
     }
 
     if (!token) {
