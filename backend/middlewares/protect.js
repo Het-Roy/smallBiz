@@ -4,12 +4,17 @@ const User = require('../models/User');
 const protect = async (req, res, next) => {
   try {
     const authHeader = req.headers.authorization;
+    let token;
 
-    if (!authHeader || !authHeader.startsWith('Bearer ')) {
-      return res.status(401).json({ message: 'No token provided. Access denied.' });
+    if (authHeader && authHeader.startsWith('Bearer ')) {
+      token = authHeader.split(/\s+/)[1];
+    } else if (req.query.token) {
+      token = req.query.token;
     }
 
-    const token = authHeader.split(' ')[1];
+    if (!token) {
+      return res.status(401).json({ message: 'No token provided. Access denied.' });
+    }
     
     // Debug log for Render logs
     console.log(`[Auth] Verifying token: ${token.substring(0, 5)}...`);
