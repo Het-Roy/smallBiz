@@ -2,7 +2,7 @@
 
 This document provides all the endpoints available in the SmallBiz CRM backend. Use these to test in Postman and generate your documentation.
 
-**Base URL:** `http://localhost:5000/api` (or your Render URL)
+**Base URL:** `https://smallbiz.onrender.com/api`
 
 ---
 
@@ -20,7 +20,19 @@ This document provides all the endpoints available in the SmallBiz CRM backend. 
       "password": "password123"
     }
     ```
-*   **Description:** Creates a new account and returns a JWT token.
+*   **Success Response:**
+    ```json
+    {
+      "token": "a1b2c3d4e5f6...",
+      "user": {
+        "id": "60d5ec...",
+        "name": "John Doe",
+        "email": "john@example.com",
+        "businessName": "Doe Enterprises",
+        "role": "owner"
+      }
+    }
+    ```
 
 ### 2. Login User
 *   **Method:** `POST`
@@ -32,19 +44,45 @@ This document provides all the endpoints available in the SmallBiz CRM backend. 
       "password": "password123"
     }
     ```
-*   **Description:** Authenticates a user and returns a fresh JWT token.
+*   **Success Response:**
+    ```json
+    {
+      "token": "a1b2c3d4e5f6...",
+      "user": {
+        "id": "60d5ec...",
+        "name": "John Doe",
+        "email": "john@example.com",
+        "businessName": "Doe Enterprises",
+        "role": "owner"
+      }
+    }
+    ```
 
 ### 3. Get Current User (Me)
 *   **Method:** `GET`
 *   **Endpoint:** `/auth/me`
 *   **Headers:** `Authorization: Bearer <token>`
-*   **Description:** Returns the profile of the currently authenticated user.
+*   **Success Response:**
+    ```json
+    {
+      "id": "60d5ec...",
+      "name": "John Doe",
+      "email": "john@example.com",
+      "businessName": "Doe Enterprises",
+      "role": "owner"
+    }
+    ```
 
 ### 4. Logout
 *   **Method:** `POST`
 *   **Endpoint:** `/auth/logout`
 *   **Headers:** `Authorization: Bearer <token>`
-*   **Description:** Invalidates the current session token in the database.
+*   **Success Response:**
+    ```json
+    {
+      "message": "Logged out successfully."
+    }
+    ```
 
 ### 5. Complete Onboarding
 *   **Method:** `POST`
@@ -58,21 +96,18 @@ This document provides all the endpoints available in the SmallBiz CRM backend. 
       "primaryGoal": "Manage WhatsApp messages"
     }
     ```
-*   **Description:** Saves user preferences after signup.
-
-### 6. Update Profile
-*   **Method:** `PUT`
-*   **Endpoint:** `/auth/update-profile`
-*   **Headers:** `Authorization: Bearer <token>`
-*   **Body (JSON):**
+*   **Success Response:**
     ```json
     {
-      "name": "John Updated",
-      "businessName": "New Business Name",
-      "whatsappNumber": "+919876543210"
+      "message": "Onboarding complete!",
+      "isOnboarded": true,
+      "onboarding": {
+        "industry": "Retail",
+        "teamSize": "2-5",
+        "primaryGoal": "Manage WhatsApp messages"
+      }
     }
     ```
-*   **Description:** Updates user profile details.
 
 ---
 
@@ -82,7 +117,25 @@ This document provides all the endpoints available in the SmallBiz CRM backend. 
 *   **Method:** `GET`
 *   **Endpoint:** `/contacts`
 *   **Headers:** `Authorization: Bearer <token>`
-*   **Description:** Retrieves all contacts belonging to the logged-in user.
+*   **Success Response:**
+    ```json
+    {
+      "success": true,
+      "count": 1,
+      "data": [
+        {
+          "_id": "60d5f1...",
+          "name": "Jane Smith",
+          "email": "jane@example.com",
+          "phone": "+91 99999 88888",
+          "company": "Smith Logistics",
+          "stage": "Lead",
+          "tags": ["VIP"],
+          "createdAt": "2026-05-01T..."
+        }
+      ]
+    }
+    ```
 
 ### 2. Create New Contact
 *   **Method:** `POST`
@@ -95,9 +148,22 @@ This document provides all the endpoints available in the SmallBiz CRM backend. 
       "email": "jane@example.com",
       "phone": "+91 99999 88888",
       "company": "Smith Logistics",
-      "stage": "Lead",
-      "tags": ["VIP", "New"],
-      "notes": "Met at the conference."
+      "stage": "Lead"
+    }
+    ```
+*   **Success Response:**
+    ```json
+    {
+      "success": true,
+      "data": {
+        "_id": "60d5f1...",
+        "name": "Jane Smith",
+        "email": "jane@example.com",
+        "phone": "+91 99999 88888",
+        "company": "Smith Logistics",
+        "stage": "Lead",
+        "user": "60d5ec..."
+      }
     }
     ```
 
@@ -105,7 +171,20 @@ This document provides all the endpoints available in the SmallBiz CRM backend. 
 *   **Method:** `GET`
 *   **Endpoint:** `/contacts/:id`
 *   **Headers:** `Authorization: Bearer <token>`
-*   **Description:** Fetches details of a specific contact by ID.
+*   **Success Response:**
+    ```json
+    {
+      "success": true,
+      "data": {
+        "_id": "60d5f1...",
+        "name": "Jane Smith",
+        "email": "jane@example.com",
+        "phone": "+91 99999 88888",
+        "company": "Smith Logistics",
+        "stage": "Lead"
+      }
+    }
+    ```
 
 ### 4. Update Contact
 *   **Method:** `PUT`
@@ -114,8 +193,18 @@ This document provides all the endpoints available in the SmallBiz CRM backend. 
 *   **Body (JSON):**
     ```json
     {
-      "stage": "Won",
-      "notes": "Closed the deal!"
+      "stage": "Won"
+    }
+    ```
+*   **Success Response:**
+    ```json
+    {
+      "success": true,
+      "data": {
+        "_id": "60d5f1...",
+        "name": "Jane Smith",
+        "stage": "Won"
+      }
     }
     ```
 
@@ -123,17 +212,10 @@ This document provides all the endpoints available in the SmallBiz CRM backend. 
 *   **Method:** `DELETE`
 *   **Endpoint:** `/contacts/:id`
 *   **Headers:** `Authorization: Bearer <token>`
-*   **Description:** Permanently removes a contact.
-
----
-
-## 🧪 Testing Tips for Postman:
-1.  **Environment Variables**: Create an environment in Postman and add a variable called `token`.
-2.  **Auth Tab**: In your protected requests, go to the **Auth** tab, select **Bearer Token**, and use `{{token}}`.
-3.  **Automatic Token Setting**: You can add this script to the **Tests** tab of your Login request to automatically save the token:
-    ```javascript
-    const response = pm.response.json();
-    if (response.token) {
-        pm.environment.set("token", response.token);
+*   **Success Response:**
+    ```json
+    {
+      "success": true,
+      "data": {}
     }
     ```
