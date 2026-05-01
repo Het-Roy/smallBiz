@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import DashboardLayout from '../layouts/DashboardLayout';
+import SEO from '../components/common/SEO';
 import ProfileSettings from '../components/settings/ProfileSettings';
 import BusinessInfoSettings from '../components/settings/BusinessInfoSettings';
 import TeamMembersSettings from '../components/settings/TeamMembersSettings';
@@ -66,6 +67,7 @@ const SettingsPage = () => {
 
   return (
     <DashboardLayout>
+      <SEO title="Settings" description="Configure your account, business information, team members, and CRM preferences." />
       <div className="flex-1 flex flex-col lg:flex-row min-h-0 w-full relative">
         
         {/* Settings Sub-Navigation */}

@@ -7,10 +7,16 @@ import SocialProofSection from '../components/landing/SocialProofSection';
 import PricingSection from '../components/landing/PricingSection';
 import CtaSection from '../components/landing/CtaSection';
 import Footer from '../components/landing/Footer';
+import SEO from '../components/common/SEO';
 
 const LandingPage = () => {
   return (
     <div className="min-h-screen bg-light">
+      <SEO 
+        title="Welcome to SmallBiz" 
+        description="The ultimate WhatsApp-first CRM for small businesses. Manage your contacts, deals, and invoices all in one place."
+        keywords="CRM, WhatsApp CRM, Small Business Tools, Customer Relationship Management"
+      />
       <Navbar />
       <main>
         <HeroSection />

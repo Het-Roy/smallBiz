@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+Disallow: /dashboard
+Disallow: /contacts
+Disallow: /whatsapp
+Disallow: /deals
+Disallow: /invoices
+Disallow: /reports
+Disallow: /settings
+Disallow: /integrations
+
+Sitemap: https://smallbiz.vercel.app/sitemap.xml

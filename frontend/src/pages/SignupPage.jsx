@@ -6,6 +6,7 @@ import { FcGoogle } from 'react-icons/fc';
 import { FaWhatsapp } from 'react-icons/fa';
 import { authService } from '../services/authService';
 import { Storage } from '../utils/storage';
+import SEO from '../components/common/SEO';
 
 const SignupPage = () => {
   const navigate = useNavigate();
@@ -44,6 +45,10 @@ const SignupPage = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+      <SEO 
+        title="Sign Up" 
+        description="Create your SmallBiz account and start managing your CRM with WhatsApp integration."
+      />
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
           Create your account

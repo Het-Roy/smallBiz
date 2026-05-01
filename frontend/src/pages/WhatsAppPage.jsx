@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import DashboardLayout from '../layouts/DashboardLayout';
+import SEO from '../components/common/SEO';
 import {
   FiSearch, FiMoreVertical, FiSend, FiPaperclip, FiFileText,
   FiTag, FiUser, FiBriefcase, FiClock, FiPlus, FiChevronRight,
@@ -67,6 +68,7 @@ const WhatsAppPage = () => {
 
   return (
     <DashboardLayout>
+      <SEO title="WhatsApp CRM" description="Chat with your customers directly on WhatsApp and manage your CRM in real-time." />
       <div className="flex-1 flex flex-col md:flex-row min-h-0 overflow-hidden w-full relative">
 
         {/* ── Panel 1: Conversation List ── */}

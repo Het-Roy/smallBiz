@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import DashboardLayout from '../layouts/DashboardLayout';
+import SEO from '../components/common/SEO';
 import { useDebounce } from '../hooks/useDebounce';
 import { useModal } from '../hooks/useModal';
 import {
@@ -267,6 +268,7 @@ const DealsPage = () => {
 
   return (
     <DashboardLayout>
+      <SEO title="Deals & Pipeline" description="Track your business deals, pipeline value, and sales stages in one visual board." />
       <div className="flex-1 flex flex-col min-h-0 relative w-full">
         {/* Top Header */}
         <div className="bg-white border-b border-slate-200 px-6 lg:px-8 py-5 flex-shrink-0 z-20">
