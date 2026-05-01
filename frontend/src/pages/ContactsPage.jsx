@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import DashboardLayout from '../layouts/DashboardLayout';
+import SEO from '../components/common/SEO';
 import { 
   FiSearch, FiFilter, FiPlus, FiList, FiGrid, FiChevronDown, 
   FiMessageCircle, FiEdit2, FiMoreVertical, FiChevronLeft, FiChevronRight,
@@ -46,6 +47,7 @@ const ContactsPage = () => {
 
   return (
     <DashboardLayout>
+      <SEO title="Contacts" description="Manage your customer contacts and leads efficiently." />
       <div className="flex-1 flex flex-col relative w-full">
         
         {/* Main Content Area */}

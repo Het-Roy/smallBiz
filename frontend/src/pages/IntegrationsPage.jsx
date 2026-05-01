@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import DashboardLayout from '../layouts/DashboardLayout';
+import SEO from '../components/common/SEO';
 import { FiSearch, FiSettings, FiRefreshCw, FiPause, FiArrowLeft, FiAlertCircle, FiCheckCircle, FiMoreVertical, FiArrowRight, FiSliders } from 'react-icons/fi';
 
 // Mock Data
@@ -530,6 +531,7 @@ const IntegrationsPage = () => {
 
   return (
     <DashboardLayout>
+      <SEO title="Integrations" description="Connect your business tools like Excel, Razorpay, and Zoho Books to SmallBiz CRM." />
       <div className="flex-1 w-full overflow-y-auto">
          {currentView === 'hub' && <IntegrationsHub onSelectConnector={handleSelectConnector} onViewMonitor={() => setCurrentView('monitor')} />}
          {currentView === 'detail' && <ConnectorDetail connector={selectedConnector} onBack={() => setCurrentView('hub')} onViewMonitor={() => setCurrentView('monitor')} />}

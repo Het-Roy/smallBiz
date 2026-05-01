@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import DashboardLayout from '../layouts/DashboardLayout';
+import SEO from '../components/common/SEO';
 import { 
   FiCalendar, FiDownload, FiChevronDown, FiTrendingUp, FiTrendingDown, 
   FiDollarSign, FiBriefcase, FiUsers, FiMessageSquare, FiPieChart, FiLink,
@@ -18,6 +19,7 @@ const ReportsPage = () => {
 
   return (
     <DashboardLayout>
+      <SEO title="Reports & Analytics" description="Analyze your business performance with detailed reports on revenue, deals, and contacts." />
       <div className="flex-1 flex flex-col min-h-0 overflow-hidden w-full relative">
         {/* Top Bar */}
         <div className="bg-white border-b border-slate-200 px-6 lg:px-8 py-5 flex-shrink-0 z-20">

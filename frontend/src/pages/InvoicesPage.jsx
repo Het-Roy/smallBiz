@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import DashboardLayout from '../layouts/DashboardLayout';
+import SEO from '../components/common/SEO';
 import {
   FiSearch, FiFilter, FiPlus, FiEye, FiDownload, FiSend,
   FiMoreVertical, FiX, FiArrowLeft, FiCheck, FiClock,
@@ -52,6 +53,7 @@ const InvoicesPage = () => {
 
   return (
     <DashboardLayout>
+      <SEO title="Invoices" description="Create, send, and track professional invoices for your small business." />
       <div className="flex-1 flex flex-col min-h-0 overflow-hidden w-full relative">
         {/* Top Bar */}
         <div className="bg-white border-b border-slate-200 px-4 md:px-8 py-5 flex-shrink-0">
