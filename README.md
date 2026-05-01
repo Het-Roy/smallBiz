@@ -40,12 +40,6 @@ Figma Design: [View Prototype →](https://www.figma.com/design/tR0qixfQ9u8WHDck
 
 ---
 
-## 📄 License
-
-Het Roy © SmallBiz CRM
-
----
-
 ## 📁 Project Structure
 
 This project uses the **MERN** stack (MongoDB, Express, React, Node.js) with a clean separation between the frontend and backend.
@@ -68,4 +62,10 @@ The backend follows the **MVC (Model-View-Controller)** architecture, making it 
 - **`utils/`**: Reusable helper functions.
 - **`app.js`**: Where the Express app is configured.
 - **`index.js`**: The main entry point that starts the server.
+
+---
+
+## 📄 License
+
+Het Roy © SmallBiz CRM
 
