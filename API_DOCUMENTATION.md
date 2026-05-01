@@ -10,7 +10,7 @@ This document provides all the endpoints available in the SmallBiz CRM backend. 
 
 ### 1. Register User
 *   **Method:** `POST`
-*   **Endpoint:** `/auth/register`
+*   **Full Route:** `https://smallbiz.onrender.com/api/auth/register`
 *   **Body (JSON):**
     ```json
     {
@@ -36,7 +36,7 @@ This document provides all the endpoints available in the SmallBiz CRM backend. 
 
 ### 2. Login User
 *   **Method:** `POST`
-*   **Endpoint:** `/auth/login`
+*   **Full Route:** `https://smallbiz.onrender.com/api/auth/login`
 *   **Body (JSON):**
     ```json
     {
@@ -60,7 +60,7 @@ This document provides all the endpoints available in the SmallBiz CRM backend. 
 
 ### 3. Get Current User (Me)
 *   **Method:** `GET`
-*   **Endpoint:** `/auth/me`
+*   **Full Route:** `https://smallbiz.onrender.com/api/auth/me`
 *   **Headers:** `Authorization: Bearer <token>`
 *   **Success Response:**
     ```json
@@ -75,7 +75,7 @@ This document provides all the endpoints available in the SmallBiz CRM backend. 
 
 ### 4. Logout
 *   **Method:** `POST`
-*   **Endpoint:** `/auth/logout`
+*   **Full Route:** `https://smallbiz.onrender.com/api/auth/logout`
 *   **Headers:** `Authorization: Bearer <token>`
 *   **Success Response:**
     ```json
@@ -86,7 +86,7 @@ This document provides all the endpoints available in the SmallBiz CRM backend. 
 
 ### 5. Complete Onboarding
 *   **Method:** `POST`
-*   **Endpoint:** `/auth/onboarding`
+*   **Full Route:** `https://smallbiz.onrender.com/api/auth/onboarding`
 *   **Headers:** `Authorization: Bearer <token>`
 *   **Body (JSON):**
     ```json
@@ -109,13 +109,32 @@ This document provides all the endpoints available in the SmallBiz CRM backend. 
     }
     ```
 
+### 6. Update Profile
+*   **Method:** `PUT`
+*   **Full Route:** `https://smallbiz.onrender.com/api/auth/update-profile`
+*   **Headers:** `Authorization: Bearer <token>`
+*   **Body (JSON):**
+    ```json
+    {
+      "name": "John Updated",
+      "businessName": "New Business Name"
+    }
+    ```
+*   **Success Response:**
+    ```json
+    {
+      "message": "Profile updated successfully.",
+      "user": { ... }
+    }
+    ```
+
 ---
 
 ## 👥 Contacts Routes (`/contacts`)
 
 ### 1. Get All Contacts
 *   **Method:** `GET`
-*   **Endpoint:** `/contacts`
+*   **Full Route:** `https://smallbiz.onrender.com/api/contacts`
 *   **Headers:** `Authorization: Bearer <token>`
 *   **Success Response:**
     ```json
@@ -139,7 +158,7 @@ This document provides all the endpoints available in the SmallBiz CRM backend. 
 
 ### 2. Create New Contact
 *   **Method:** `POST`
-*   **Endpoint:** `/contacts`
+*   **Full Route:** `https://smallbiz.onrender.com/api/contacts`
 *   **Headers:** `Authorization: Bearer <token>`
 *   **Body (JSON):**
     ```json
@@ -169,7 +188,7 @@ This document provides all the endpoints available in the SmallBiz CRM backend. 
 
 ### 3. Get Single Contact
 *   **Method:** `GET`
-*   **Endpoint:** `/contacts/:id`
+*   **Full Route:** `https://smallbiz.onrender.com/api/contacts/:id`
 *   **Headers:** `Authorization: Bearer <token>`
 *   **Success Response:**
     ```json
@@ -188,7 +207,7 @@ This document provides all the endpoints available in the SmallBiz CRM backend. 
 
 ### 4. Update Contact
 *   **Method:** `PUT`
-*   **Endpoint:** `/contacts/:id`
+*   **Full Route:** `https://smallbiz.onrender.com/api/contacts/:id`
 *   **Headers:** `Authorization: Bearer <token>`
 *   **Body (JSON):**
     ```json
@@ -210,7 +229,7 @@ This document provides all the endpoints available in the SmallBiz CRM backend. 
 
 ### 5. Delete Contact
 *   **Method:** `DELETE`
-*   **Endpoint:** `/contacts/:id`
+*   **Full Route:** `https://smallbiz.onrender.com/api/contacts/:id`
 *   **Headers:** `Authorization: Bearer <token>`
 *   **Success Response:**
     ```json
